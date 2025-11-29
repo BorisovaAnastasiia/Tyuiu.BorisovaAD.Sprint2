@@ -3,6 +3,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
+        DataService ds = new DataService();
         Console.Title = "Спринт #2 | Выполнил: Борисова А.Д. | Смартб-25-1";
         Console.WriteLine("***************************************************************************");
         Console.WriteLine("* Спринт #2                                                               *");
@@ -21,21 +22,18 @@ internal class Program
         Console.WriteLine("* ИСХОДНЫЕ ДАННЫЕ:                                                        *");
         Console.WriteLine("***************************************************************************");
 
-        Console.Write("Введите значение X: ");
+        Console.Write("Введите значение переменной X: ");
         double x = Convert.ToDouble(Console.ReadLine());
-
-        Console.Write("Введите значение Y: ");
+        Console.Write("Введите значение переменной Y: ");
         double y = Convert.ToDouble(Console.ReadLine());
 
-        Console.WriteLine();
         Console.WriteLine("***************************************************************************");
         Console.WriteLine("* РЕЗУЛЬТАТ:                                                              *");
         Console.WriteLine("***************************************************************************");
 
-        DataService ds = new DataService();
         double result = ds.Calculate(x, y);
-
-        Console.WriteLine($"Значение Z = {result}");
+        // Используем форматирование ":F3" для округления до 3 знаков после запятой при выводе
+        Console.WriteLine($"Результат вычислений z = {result:F3}");
 
         Console.ReadKey();
     }

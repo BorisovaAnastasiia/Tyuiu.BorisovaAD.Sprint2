@@ -5,17 +5,16 @@ namespace Tyuiu.BorisovaAD.Sprint2.Task4.V25.Lib
     {
         public double Calculate(double x, double y)
         {
-            //double z = Math.Sqrt(x) > 2 * y
-            //    ? Math.Pow(7 + 2 / (y * y), x)
-            //    : (3 * x * x - Math.Cos(y * y) + 10)
-            //      / (y * y - Math.Pow(Math.Sin(x), 2) + 12);
+            // Условие: x - 20 * 2 < y < 4  =>  x - 40 < y < 4
+            // Формула 1 (если true): z = (1 + 2/x^2)^y
+            // Формула 2 (если false): z = y + ((x+1)/(y+2))^x
 
-            double z = Math.Sqrt(x) > 2.0 * y
-                ? Math.Pow(7.0 + (2.0 / (y * y)), x)
-                : ((3.0 * x * x - Math.Cos(y) * Math.Cos(y) + 10.0)
-                / (y * y - Math.Sin(x * x) + 12.0));
+            // Используем тернарный оператор для выбора формулы
+            double z = (x - 40 < y && y < 4) ?
+                Math.Pow(1 + 2 / Math.Pow(x, 2), y) :
+                y + Math.Pow((x + 1) / (y + 2), x);
 
-            return Math.Round(z, 3);
+            return z;
         }
     }
 }
